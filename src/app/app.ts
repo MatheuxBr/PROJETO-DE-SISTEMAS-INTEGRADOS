@@ -39,4 +39,8 @@ export class App {
     ];
   }
 
+  DELETE_tarefas(tarefa: Tarefa){
+    this.arrayDeTarefas =  this.arrayDeTarefas.filter(tarefaDoLoop => tarefaDoLoop !== tarefa);
+  }
+
 }

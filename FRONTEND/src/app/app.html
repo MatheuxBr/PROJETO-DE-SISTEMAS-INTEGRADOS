@@ -15,8 +15,9 @@
   </button>
 
   <ul>
-    <li *ngFor="let tarefaDoLoop of arrayDeTarefas">
-      <app-item [tarefa]="tarefaDoLoop" (remover)="DELETE_tarefas($event)"></app-item>
+    <li *ngFor="let tarefaDoLoop of arrayDeTarefas()">
+      <app-item [tarefa]="tarefaDoLoop" (remover)="DELETE_tarefas($event)"(modificaTarefa)="UPDATE_tarefa(tarefaDoLoop)"></app-item>
+      
     </li>
   </ul>
 </div>

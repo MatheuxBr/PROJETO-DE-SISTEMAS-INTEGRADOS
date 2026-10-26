@@ -13,6 +13,7 @@ export class Item {
 
   @Input() tarefa: Tarefa = new Tarefa('', false);
   @Output() remover = new EventEmitter<Tarefa>();
+  @Output() modificaTarefa = new EventEmitter();
 
   DELETE_tarefas() {
     this.remover.emit(this.tarefa);

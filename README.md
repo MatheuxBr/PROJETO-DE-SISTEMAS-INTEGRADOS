@@ -1,59 +1,64 @@
-# TODOapp
+# Projeto — Frameworks Web
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.3.
+Projeto desenvolvido para a disciplina de Frameworks Web — **UNISANTA**, com estrutura dividida entre Frontend e Backend.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Tecnologias Utilizadas
+
+* **Angular** — Desenvolvimento da interface Frontend.
+* **Node.js e npm** — Execução do ambiente JavaScript e gerenciamento de dependências.
+* **Express** — Framework para desenvolvimento do Backend.
+* **Nodemon** — Monitoramento de alterações no código durante o desenvolvimento.
+* **Mongoose** — Integração com o banco de dados MongoDB.
+
+---
+
+## 📋 Pré-requisitos
+
+Antes de iniciar, certifique-se de ter instalado em sua máquina:
+
+* [Node.js](https://nodejs.org/)
+* `npm` (instalado junto com o Node.js)
+* [Angular CLI](https://angular.io/cli)
+* MongoDB local ou uma instância configurada no [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+
+Para verificar a instalação do Node.js e do npm, execute no terminal:
 
 ```bash
+node -v
+npm -v
+```
+
+---
+
+## ⚙️ Instalação e Execução
+
+### 1. Frontend
+
+Acesse a pasta do Frontend, instale as dependências e inicie o servidor de desenvolvimento:
+
+```bash
+cd FRONTEND
+npm install
+npm install -g @angular/cli
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Após iniciar o servidor, acesse no navegador o endereço indicado no terminal (geralmente):
+👉 `http://localhost:4200`
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 2. Backend
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Acesse a pasta da API e execute os comandos abaixo na ordem apresentada:
 
 ```bash
-ng generate --help
+cd API
+npm init
+npm i express --save
+npm i nodemon -g --save-dev
+npm i mongoose --save
+nodemon index "sua URL de conexão com o BD"
 ```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

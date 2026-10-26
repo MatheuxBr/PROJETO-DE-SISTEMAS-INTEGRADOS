@@ -19,9 +19,8 @@ Projeto desenvolvido para a disciplina de Frameworks Web — **UNISANTA**, com e
 Antes de iniciar, certifique-se de ter instalado em sua máquina:
 
 * [Node.js](https://nodejs.org/)
-* `npm` (instalado junto com o Node.js)
 * [Angular CLI](https://angular.io/cli)
-* MongoDB local ou uma instância configurada no [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+* MongoDB [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 
 Para verificar a instalação do Node.js e do npm, execute no terminal:
 

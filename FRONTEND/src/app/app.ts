@@ -13,7 +13,7 @@ export class App {
   protected readonly title = signal('TODOapp');
 
   arrayDeTarefas = signal<Tarefa[]>([]);
-  apiURL: string = 'http://localhost:3000';
+  apiURL: string = 'https://projeto-de-sistemas-integrados-yvqt-6kutkyiym-unisanta.vercel.app/';
 
   constructor(private http: HttpClient) {
     this.READ_tarefas();

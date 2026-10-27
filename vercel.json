@@ -1,3 +1,4 @@
+
 {
     "$schema": "https://openapi.vercel.sh/vercel.json",
     "services": {
@@ -10,5 +11,19 @@
         "framework": "angular"
       }
     },
-    "rewrites": []
+    "rewrites": [
+      {
+        "source": "/api/(.*)",
+        "destination": {
+          "service": "api"
+        }
+      },
+      {
+        "source": "/(.*)",
+        "destination": {
+          "service": "frontend"
+        }
+      }
+    ]
   }
+  

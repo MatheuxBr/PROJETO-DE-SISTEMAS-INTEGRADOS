@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index mongodb+srv://vinicius_db:Database123@cluster-database01.d4dt6oi.mongodb.net/?appName=cluster-database01"
+    "start": "node index mongodb+srv://matheus214664:aicaramba@cluster0.rjc32xd.mongodb.net/?appName=Cluster0"
   },
   "dependencies": {
     "express": "^5.3.0",

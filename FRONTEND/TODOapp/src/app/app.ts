@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { Tarefa } from './tarefa';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ export class App {
   protected readonly title = signal('TODOapp');
   arrayDeTarefas = signal<Tarefa[]>([]);
   apiURL: string;
+  usuarioLogado = signal(false);
+  tokenJWT: string = '';
 
   constructor(private http: HttpClient) {
     const isServer = typeof window === 'undefined';
@@ -30,8 +33,26 @@ export class App {
         this.apiURL = '';
       }
     }
+  }
 
-    this.READ_tarefas();
+  Login(username: string, password: string) {
+    const credenciais = {
+      nome: username,
+      senha: password
+    };
+
+    this.http.post<any>(`${this.apiURL}/api/login`, credenciais).subscribe({
+      next: (resultado) => {
+        console.log('Login realizado:', resultado);
+
+        this.tokenJWT = resultado.token;
+
+        this.READ_tarefas();
+      },
+      error: (erro) => {
+        console.error('Erro ao realizar login:', erro);
+      }
+    });
   }
 
   CREATE_tarefa(descricaoNovaTarefa: string) {
@@ -51,11 +72,32 @@ export class App {
   }
 
   READ_tarefas() {
-    this.http.get<Tarefa[]>(`${this.apiURL}/api/getAll`).subscribe({
-      next: (resultado) => this.arrayDeTarefas.set(resultado),
-      error: (erro) => console.error('Erro ao buscar tarefas:', erro)
+
+    if (!this.tokenJWT) {
+      console.log('Usuário não autenticado.');
+      return;
+    }
+
+    const headers = new HttpHeaders().set(
+      'id-token',
+      this.tokenJWT
+    );
+
+    this.http.get<Tarefa[]>(
+      `${this.apiURL}/api/getAll`,
+      { headers }
+    ).subscribe({
+      next: (resultado) => {
+        this.arrayDeTarefas.set(resultado);
+        this.usuarioLogado.set(true);
+      },
+      error: (erro) => {
+        console.error('Erro ao buscar tarefas:', erro);
+        this.usuarioLogado.set(false);
+      }
     });
   }
+
 
   UPDATE_tarefa(tarefaAserModificada: Tarefa) {
     const indice = this.arrayDeTarefas().indexOf(tarefaAserModificada);
